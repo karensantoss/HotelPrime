@@ -1,0 +1,23 @@
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns="http://www.w3.org/1999/xhtml"
+                
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui">
+    
+    <h:form>
+        <p:panelMenu style="width: 190px">
+            <p:submenu label="Cadastros">
+                <p:menuitem value="Cargo" url="/faces/paginas/cargo.xhtml" />
+                <p:menuitem value="Funcionario" url="/faces/paginas/funcionario.xhtml" />
+            </p:submenu>
+            <p:submenu label="Listagens">
+               <p:menuitem value="Cargo" url="/faces/paginas/listacargos.xhtml" />
+                <p:menuitem value="Funcionario" url="/faces/paginas/listafuncionarios.xhtml" />
+            </p:submenu>
+            <p:submenu label="Relatórios">
+                
+            </p:submenu>
+        </p:panelMenu>
+    </h:form>
+</ui:composition>

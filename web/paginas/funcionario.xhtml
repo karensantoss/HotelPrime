@@ -1,0 +1,87 @@
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="../WEB-INF/template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="conteudo">
+        <h:form acceptcharset="ISO-8859-1">
+            <p:messages closable="true"/>
+            <h:inputHidden value="#{funcionarioMB.funcionario.codigo}"/>
+            <p:panel header="Cadastro de Funcionário">
+                <p:fieldset legend="Dados Pessoais" toggleable="true">
+                <h:panelGrid columns="4" width="100%">
+
+                    <h:outputLabel value="Nome: " for="nome"/>
+                    <p:inputText id="nome" value="#{funcionarioMB.funcionario.nome}" required="true" requiredMessage="É necessário o Nome do Funcionário."/>
+
+
+                    <h:outputLabel value="CPF: " for="cpf"/>
+                    <p:inputMask id="cpf" value="#{funcionarioMB.funcionario.cpf}" required="true" requiredMessage="É necessário o CPF do Funcionário." mask="999.999.999-99"/>
+
+                   
+
+                    <h:outputLabel value="Data de Nascimento: " for="dtnascimento"/>
+                    <p:calendar id="dtnascimento" value="#{funcionarioMB.funcionario.dataNacimento}" required="true" requiredMessage="É necessário a data do Funcionário." converterMessage="Data no formato inválido. Utilize dd/mm/aaaa">
+                         <f:convertDateTime pattern="dd/MM/yyyy" type="date" timeZone="Brazil/East"/>
+                    </p:calendar>
+                    
+                    <h:outputLabel value="Cargo: " for="cargo"/>
+                    <p:selectOneMenu   filter="true" id="cargo" value="#{funcionarioMB.cargoId}" required="true" requiredMessage="É necessaoario o cargo do fumcionário " >                    
+                        <f:selectItems value="#{cargoMB.cargos}" var="cargo" itemLabel="#{cargo.nome}" itemValue="#{cargo.codigo}"/>
+                    </p:selectOneMenu>   
+
+                    <h:outputLabel value="Telefone " for="telefone"/>
+                    <p:inputMask mask="(99)9999-9999" id="telefone" value="#{funcionarioMB.funcionario.telefone}"/>
+                    <h:outputLabel value="Email " for="email"/>
+                    <h:inputText id="email" value="#{funcionarioMB.funcionario.email}"/>
+
+                </h:panelGrid>
+                    
+                </p:fieldset>
+                
+                
+                
+                <p:fieldset legend="Dados de acesso" toggleable="true">
+                <h:panelGrid columns="4">
+                                       
+                    <h:outputLabel value="Login:" for="login"/>
+                    <p:inputText id="login" value="#{funcionarioMB.funcionario.login}"/>
+                    
+                    <h:outputLabel value="Senha:" for="senha"/>
+                    <p:password id="senha" value="#{funcionarioMB.funcionario.senha}" feedback="true"/>          
+                      
+                </h:panelGrid>
+                    
+                </p:fieldset>
+
+             
+                <p:fieldset legend="Endereço" toggleable="true">
+                <h:panelGrid columns="4"> 
+                    <h:outputLabel value="Estado: " for="estado"/>
+                    <p:inputText id="estado" value="#{funcionarioMB.funcionario.endereco.estado}"/>
+                    <h:outputLabel value="Cidade: " for="cidade"/>
+                    <p:inputText id="cidade" value="#{funcionarioMB.funcionario.endereco.cidade}"/>
+                    <h:outputLabel value="Bairro: " for="bairro"/>
+                    <p:inputText id="bairro" value="#{funcionarioMB.funcionario.endereco.bairro}"/>
+                    <h:outputLabel value="Rua: " for="rua"/>
+                    <p:inputText id="rua" value="#{funcionarioMB.funcionario.endereco.rua}"/>
+                    <h:outputLabel value="CEP: " for="cep"/>
+                    <p:inputMask mask="99999-999" id="cep" value="#{funcionarioMB.funcionario.endereco.cep}"/>
+                    <h:outputLabel value="Número: " for="numero"/>
+                    <p:inputText id="numero" value="#{funcionarioMB.funcionario.endereco.numero}"/>
+                    <h:outputLabel value="Complemento " for="complemento"/>
+                    <p:inputText id="complemento" value="#{funcionarioMB.funcionario.endereco.complemento}"/>
+                </h:panelGrid>
+                </p:fieldset>
+            </p:panel>
+            
+            <p:panel>
+                <p:commandButton value="Salvar" action="#{funcionarioMB.insere}" ajax="false"/>
+
+                <p:commandButton value="Cancelar" type="reset"/>
+            </p:panel>
+
+        </h:form>
+    </ui:define>
+</ui:composition>
